@@ -22,40 +22,40 @@ public class JUnitTestParser<JavaSymbolSolver>  {
 		try {
 			CompilationUnit cu = StaticJavaParser.parse(testFile);
 			
-			List<TestItem> init;
+			List<TestCase> tests  = (List<TestCase>) new TestCase();
+			
+			List<TestItem> init = (List<TestItem>) new TestItem();;
 		
 			VoidVisitor<List<TestItem>> tic = new TestInitCollector(testFile.getName().substring(0, testFile.getName().length()-5));
-			tic.visit(cu, init);
+			tic.visit(cu, init );
 			
-			List<TestItem> preparation;
+			List<TestItem> preparation = (List<TestItem>) new TestItem();
 			
 			VoidVisitor<List<TestItem>> tpc = new TestPreparationCollector(testFile.getName().substring(0, testFile.getName().length()-5));
 			tpc.visit(cu, preparation);
 			
-			List<TestItem> wrapup;
+			List<TestItem> wrapup = (List<TestItem>) new TestItem();
 			
 			VoidVisitor<List<TestItem>> twc = new TestWrapupCollector(testFile.getName().substring(0, testFile.getName().length()-5));
 			twc.visit(cu, wrapup);
 			
-			List<TestItem> destroy;
+			List<TestItem> destroy = (List<TestItem>) new TestItem();
 			
 			VoidVisitor<List<TestItem>> tdc = new TestDestroyCollector(testFile.getName().substring(0, testFile.getName().length()-5));
 			tdc.visit(cu, destroy);
 			
-			List<TestCase> tests;
+			List<TestItem> test = (List<TestItem>) new TestItem();
+			
 			VoidVisitor<List<TestItem>> ttc = new TestTestCollector(testFile.getName().substring(0, testFile.getName().length()-5));
-			ttc.visit(cu,tests);
+			ttc.visit(cu,test);
 			
-			for(TestCase t : tests) {
-				t.init = init;
-				t.preparation = prepartion;
-				t.wrapup = wrapup;
-				t.destroy = destroy;
-			}
 			
-			for (int i = 0; i < t.size(); i++) {
-				System.out.println(t.get(i));
-			}
+		for (int i = 0; i < test.size(); i++) {
+			System.out.println(test.get(i));
+		}
+			
+			
+			
 	
 		
 		} catch (FileNotFoundException e) {
