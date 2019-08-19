@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
 
-
 import org.refinet.api.TestItem;
 
 import com.github.javaparser.ast.body.MethodDeclaration;

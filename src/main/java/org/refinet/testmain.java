@@ -6,7 +6,7 @@ import org.refinet.parser.JUnitTestParser;
 public class testmain {
 
 	public static void main(String[] args) {
-	JUnitTestParser.parse(new File("src/org/refinet/tests/CalculatorTests.java"));
+	JUnitTestParser.parse(new File("src/main/java/org/refinet/tests/CalculatorTests.java"));
 	
 	// JFileChooser-Objekt erstellen	
     //JFileChooser chooser = new JFileChooser();

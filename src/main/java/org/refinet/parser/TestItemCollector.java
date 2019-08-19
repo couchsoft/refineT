@@ -9,8 +9,10 @@ import org.refinet.api.TestStep;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.comments.JavadocComment;
 import com.github.javaparser.ast.Node.ParentsVisitor;
 import com.github.javaparser.ast.stmt.Statement;
+import com.github.javaparser.javadoc.description.JavadocDescription;
 
 public class TestItemCollector {
 	
@@ -23,8 +25,15 @@ public class TestItemCollector {
 		ti.name = ti.name.substring(14, ti.name.length()-2);
 	}
 	if(md.getJavadocComment().isPresent()) {
-		ti.description = md.getJavadocComment().get().getContent().trim();
-		ti.description.replaceAll(" ", "");
+		String comment = md.getJavadoc().get().getDescription().toText();
+		ti.description = comment;
+		//comment = comment.replaceAll("\\*", "");
+		/*comment = comment.replaceAll("  ", " ");*/
+		/*String[] csplit = comment.split("\\.");
+		ti.description = "";
+		for (int i = 0; i < csplit.length; i++) {
+			ti.description = ti.description + csplit[i].trim() + ".";
+		}*/
 	}
 	if (md.getBody().isPresent()) {
         NodeList<Statement> statements = md.getBody().get().getStatements();
@@ -34,7 +43,7 @@ public class TestItemCollector {
               nodes.forEach(n -> {
                   // System.out.println(ti.steps);
                   //  System.out.println(n);
-            	  ParentsVisitor pv =  new ParentsVisitor(n);
+            	 // ParentsVisitor pv =  new ParentsVisitor(n);
                   //System.out.println(pv.next().getParentNodeForChildren());
             	  
               });
