@@ -14,7 +14,7 @@ public class TestItem {
 
 	@Override
 	public String toString() {
-		return "TestItem [suite=" + suite + ", id=" + id + ", name=" + name + ", description=" + description
+		return "TestItem [suite=" + suite + ", id=" + id + ", name=" + name //+ ", description=" + description
 				+ ", steps=" + steps + "]";
 	}
 

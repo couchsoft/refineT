@@ -28,6 +28,17 @@ public class AccountingTests {
   }
   
   /**
+   * Check IBAN for EU Standard
+   *
+   * 
+   */
+  @Test
+  @DisplayName("Our Accouting app need a correct iban")
+  public void testThatCalculatorCanAddTwoNumbers() {
+    System.out.println("Some dummy debug information");
+  }
+  
+  /**
    * 
    * Clear input fields 
    * 
