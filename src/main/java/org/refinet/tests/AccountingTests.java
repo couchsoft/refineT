@@ -17,7 +17,7 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Tag;
 
 @DisplayName("Test our AccountingSystem")
-public class Accounting {
+public class AccountingTests {
   /**
    * Open the Accounting app for testing.
    */

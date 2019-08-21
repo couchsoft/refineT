@@ -50,22 +50,14 @@ public class testmain {
 	}
     
     for (int j = 0; j < array.length; j++) {
-    	if (array[j].toString().split("tests.java") != null ) {
+    	if (array[j].toString().substring(array[j].toString().length()-10, array[j].toString().length()).equals("Tests.java")) {
     	JUnitTestParser.parse(new File(array[j].toString()));
     	System.out.println(array[j]);
     	}else {
+    		System.out.println(array[j]);
     	}
 	}
     
-    
-    
-  //JUnitTestParser.parse(new File(array[i].toString()));
-  
-   // JUnitTestParser.parse(new File(name)); 
-   // "src/main/java/org/refinet/tests/CalculatorTests.java"
-    //System.out.println(name);
-    
-
 
 	// JFileChooser-Objekt erstellen	
     //JFileChooser chooser = new JFileChooser();
