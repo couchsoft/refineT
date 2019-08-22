@@ -37,18 +37,14 @@ public class testmain {
 
     Reflections reflections = new Reflections("org.refinet.tests", new SubTypesScanner(false));
     
-    Set<Class<? extends Object>> classes = 
-        reflections.getSubTypesOf(Object.class);
-    
-  
+    Set<Class<? extends Object>> classes = reflections.getSubTypesOf(Object.class);
+   
     Object[] array = classes.toArray();
-    
     
     for (int i = 0; i < array.length; i++) {
     	array[i] = "src/main/java/" + array[i].toString().substring(6, array[i].toString().length()).replace(".", "/") + ".java";
     	
-	}
-    
+	} 
     for (int j = 0; j < array.length; j++) {
     	if (array[j].toString().substring(array[j].toString().length()-10, array[j].toString().length()).equals("Tests.java")) {
     	JUnitTestParser.parse(new File(array[j].toString()));
@@ -57,7 +53,6 @@ public class testmain {
     		System.out.println(array[j]);
     	}
 	}
-    
 
 	// JFileChooser-Objekt erstellen	
     //JFileChooser chooser = new JFileChooser();
