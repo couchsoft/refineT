@@ -15,9 +15,6 @@ import org.refinet.api.TestItem;
 
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
-import com.github.javaparser.ast.type.ClassOrInterfaceType;
-import com.github.javaparser.ast.visitor.VoidVisitor;
 
 public class JUnitTestParser<JavaSymbolSolver>  {
 
@@ -46,10 +43,11 @@ public class JUnitTestParser<JavaSymbolSolver>  {
 
 		CompilationUnit cu = StaticJavaParser.parse(junitTests);
 		
-		String className = "";
+		String className = "aa";
 		
 		new ClassNameCollector().visit(cu, className);
 		
+		System.out.println(className);
 		
 		List<TestItem> init = new ArrayList<>();
 		

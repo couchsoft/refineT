@@ -14,8 +14,7 @@ public class ClassNameCollector  extends VoidVisitorAdapter<String>{
 	
 	public void visit(ClassOrInterfaceType c, String collector) {
 		super.visit(c, collector);
-		String className = c.getClass().getGenericSuperclass().toString();
-		System.out.println("fs");
+		String className = c.getNameAsString();
 		collector =  className;
 		}
 
