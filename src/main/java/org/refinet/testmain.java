@@ -8,6 +8,8 @@ import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLDecoder;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
@@ -33,35 +35,15 @@ import com.google.j2objc.annotations.ReflectionSupport;
 
 public class testmain {
 	
-	static String FILE_TO_PARSE = "src/main/java/org/refinet/tests/CalculatorTests.java";
-
+	static String FILE_TO_PARSE = "src/main/resources/tests";
 	public static void main(String[] args) {
 		
-		File fileToParse = new File(FILE_TO_PARSE);
-		List<TestCase> tests = JUnitTestParser.parse(fileToParse);
+		Path path = Paths.get(FILE_TO_PARSE);
+		List<TestCase> tests = JUnitTestParser.parse(path);
+		System.out.println(tests);
+
 		
-	System.out.println(tests);
-		/*
-	
-    Reflections reflections = new Reflections("org.refinet.tests", new SubTypesScanner(false));
-    
-    Set<Class<? extends Object>> classes = reflections.getSubTypesOf(Object.class);
-   
-    Object[] array = classes.toArray();
-    
-    for (int i = 0; i < array.length; i++) {
-    	array[i] = "src/main/java/" + array[i].toString().substring(6, array[i].toString().length()).replace(".", "/") + ".java";
-	} 
-    
-    for (int j = 0; j < array.length; j++) {
-    	if (array[j].toString().substring(array[j].toString().length()-10, array[j].toString().length()).equals("Tests.java")) {
-    	JUnitTestParser.parse(new File(array[j].toString()));
-    	System.out.println(array[j]);
-    	}else {
-    		System.out.println(array[j]);
-    	}
-	}*/
-    
+
 	}
     
   

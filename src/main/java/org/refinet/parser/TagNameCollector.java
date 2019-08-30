@@ -17,10 +17,10 @@ public class TagNameCollector extends VoidVisitorAdapter <ArrayList<Hashtable<St
 	
 	public void visit(MethodDeclaration md, ArrayList<Hashtable<String, String>> collector) {
 		super.visit(md, collector);
+		
 		ArrayList<Hashtable<String, String>> fertigeTags = new ArrayList<>();
 		Hashtable<String, String> tags = new Hashtable<>();
 		ArrayList<Integer> tagNumber = new ArrayList<>();
-
 		
 		if (md.getAnnotationByClass(Test.class).isPresent()) {
 			for (int i = 0; i < md.getAnnotations().size(); i++) {
@@ -40,7 +40,6 @@ public class TagNameCollector extends VoidVisitorAdapter <ArrayList<Hashtable<St
 			fertigeTags.add(tags);
 			tagNumber.clear();
 		}
-
 
 		collector.addAll(fertigeTags);
 }

@@ -2,34 +2,52 @@ package org.refinet.parser;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
 import org.refinet.api.TestCase;
 import org.refinet.api.TestItem;
+import org.reflections.Reflections;
+import org.reflections.scanners.SubTypesScanner;
 
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 
 public class JUnitTestParser<JavaSymbolSolver>  {
+	
+	public static List<TestCase> parse(Path path) {
+		
+		List<TestCase> testcase = new ArrayList<>();
+		
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(path, "*Tests.{java,class,jar}")) {
+		    for (Path entry: stream) {
+		    	File f =  new File(path.toString() +"/"+ entry.getFileName());
+		    	testcase.addAll(parse(f));
+		    }
+		} catch (IOException x) {
+		    System.err.println(x);
+		}
+		return testcase;
+	}
 
-	public static List<TestCase> parse(File path) {
+	public static List<TestCase> parse(File file) {
 			String junitFile = "";
-			
 			// file in String umwandeln
-			try (Stream<String> lines = Files.lines(Paths.get(path.getAbsolutePath()))){
+			try (Stream<String> lines = Files.lines(Paths.get(file.getPath()))){
 					junitFile = lines.collect(Collectors.joining(System.lineSeparator()));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			// file einlesen
 			return parse(junitFile);
 	}

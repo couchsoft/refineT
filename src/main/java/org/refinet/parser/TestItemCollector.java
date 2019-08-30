@@ -19,10 +19,6 @@ public class TestItemCollector {
 			String comment = md.getJavadoc().get().getDescription().toText();
 			ti.description = comment;
 		}
-		
-		
-		
-		
 		return ti;
 	}
 	

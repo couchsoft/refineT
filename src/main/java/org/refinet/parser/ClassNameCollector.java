@@ -22,10 +22,8 @@ public class ClassNameCollector  extends VoidVisitorAdapter<ArrayList<String>> {
 			displayName = getDisplayNameWithoutAnnotation(c.getAnnotationByClass(DisplayName.class).get().toString());
 			classItem.add(displayName);
 		}
-		
 		collector.addAll(classItem);
-		
-		
+
 		}
 	
 	private static String getDisplayNameWithoutAnnotation(String displayName) {
