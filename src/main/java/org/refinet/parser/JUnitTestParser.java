@@ -1,7 +1,6 @@
 package org.refinet.parser;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -38,12 +37,13 @@ public class JUnitTestParser<JavaSymbolSolver>  {
 	
 	public static List<TestCase> parse(String junitTests) {
 		
+		System.out.println(junitTests);
 		
 		List<TestCase> tests  =  new ArrayList<>();
 
 		CompilationUnit cu = StaticJavaParser.parse(junitTests);
 		
-		String className = "aa";
+		String className = "";
 		
 		new ClassNameCollector().visit(cu, className);
 		

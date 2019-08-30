@@ -40,7 +40,7 @@ public class testmain {
 		File fileToParse = new File(FILE_TO_PARSE);
 		List<TestCase> tests = JUnitTestParser.parse(fileToParse);
 		
-	//System.out.println(tests);
+	System.out.println(tests);
 		/*
 	
     Reflections reflections = new Reflections("org.refinet.tests", new SubTypesScanner(false));

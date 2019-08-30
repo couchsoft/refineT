@@ -1,18 +1,9 @@
 package org.refinet.parser;
 
-import java.util.List;
-
 import org.junit.jupiter.api.DisplayName;
 import org.refinet.api.TestItem;
 
-import com.github.javaparser.ast.Node;
-import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.ast.comments.JavadocComment;
-import com.github.javaparser.ast.expr.AnnotationExpr;
-import com.github.javaparser.ast.Node.ParentsVisitor;
-import com.github.javaparser.ast.stmt.Statement;
-import com.github.javaparser.javadoc.description.JavadocDescription;
 
 public class TestItemCollector {
 	

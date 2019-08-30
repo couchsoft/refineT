@@ -11,7 +11,7 @@ public class TestItem {
 
 	@Override
 	public String toString() {
-		return "TestItem [, id=" + id + ", name=" + name //+ ", description=" + description
+		return "TestItem [id=" + id + ", name=" + name //+ ", description=" + description
 			 + "]";
 	}
 
