@@ -11,19 +11,14 @@ import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
 public class TestWrapupCollector extends VoidVisitorAdapter<List<TestItem>> {
 
-	String file;
 	TestItem tc = new TestItem();
 	
-	public TestWrapupCollector(String file) {
-		this.file = file;
-	}
+	
 	public void visit(MethodDeclaration md, List<TestItem> collector) {
 		super.visit(md, collector);
 		if (md.getAnnotationByClass(AfterEach.class).isPresent()) {
 		
-		TestItemCollector tc= new TestItemCollector();
-		TestItem ti = tc.TestItemCollector(file, md);
-			
+		TestItem ti = TestItemCollector.collect(md);
 		collector.add(ti);	
 		}
 		

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class TestCase {
 
+	public String suite;
 	public List<TestItem> init  = new ArrayList<>(); // method that is annotated with @BeforeAll
 	public List<TestItem>  test = new ArrayList<>();; // method @test
 	public List<TestItem> preparation = new ArrayList<>();; // method that is annotated with @BeforeEach

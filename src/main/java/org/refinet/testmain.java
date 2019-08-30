@@ -18,6 +18,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 import org.junit.jupiter.api.Test;
+import org.refinet.api.TestCase;
 import org.refinet.parser.JUnitTestParser;
 import org.reflections.Reflections;
 import org.reflections.scanners.ResourcesScanner;
@@ -31,10 +32,17 @@ import com.google.j2objc.annotations.ReflectionSupport;
 
 
 public class testmain {
+	
+	static String FILE_TO_PARSE = "src/main/java/org/refinet/tests/CalculatorTests.java";
 
 	public static void main(String[] args) {
+		
+		File fileToParse = new File(FILE_TO_PARSE);
+		List<TestCase> tests = JUnitTestParser.parse(fileToParse);
+		
+	//System.out.println(tests);
+		/*
 	
-
     Reflections reflections = new Reflections("org.refinet.tests", new SubTypesScanner(false));
     
     Set<Class<? extends Object>> classes = reflections.getSubTypesOf(Object.class);
@@ -43,8 +51,8 @@ public class testmain {
     
     for (int i = 0; i < array.length; i++) {
     	array[i] = "src/main/java/" + array[i].toString().substring(6, array[i].toString().length()).replace(".", "/") + ".java";
-    	
 	} 
+    
     for (int j = 0; j < array.length; j++) {
     	if (array[j].toString().substring(array[j].toString().length()-10, array[j].toString().length()).equals("Tests.java")) {
     	JUnitTestParser.parse(new File(array[j].toString()));
@@ -52,16 +60,8 @@ public class testmain {
     	}else {
     		System.out.println(array[j]);
     	}
-	}
-
-	// JFileChooser-Objekt erstellen	
-    //JFileChooser chooser = new JFileChooser();
-    //int file = chooser.showOpenDialog(null);
-    //if(file == JFileChooser.APPROVE_OPTION){
-    //String a = chooser.getSelectedFile().getAbsolutePath();
-    //System.out.println(a);
-	//JUnitTestParser.parse(new File(a));
-    //}
+	}*/
+    
 	}
     
   
