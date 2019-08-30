@@ -87,7 +87,7 @@ public class CalculatorTests {
   @Test
   @DisplayName("Our calculator should be able to divide two numbers")
   @Tag("regression")
-  @Tag("pointcalc")
+  @Tag("runtime:fast")
   public void testThatCalculatorCanDivideTwoNumbers() {
     CalculatorUsage.enterNumber(20);
     CalculatorUsage.enterOperation("/");
@@ -100,7 +100,7 @@ public class CalculatorTests {
   @DisplayName("Our calculator should fail if we try to divide by zero")
   @Tag("regression")
   @Tag("negative")
-  @Tag("pointcalc")
+  @Tag("runtime:slow")
   public void testThatCalculatorFailsIfDivisorIsNull() {
     CalculatorUsage.enterNumber(5);
     CalculatorUsage.enterOperation("/");

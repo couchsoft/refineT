@@ -5,9 +5,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 
 import org.refinet.api.TestCase;
 import org.refinet.api.TestItem;
@@ -30,24 +32,22 @@ public class JUnitTestParser<JavaSymbolSolver>  {
 			
 			// file einlesen
 			return parse(junitFile);
-			
-			
 	}
 	
 	
 	public static List<TestCase> parse(String junitTests) {
 		
-		System.out.println(junitTests);
-		
 		List<TestCase> tests  =  new ArrayList<>();
 
 		CompilationUnit cu = StaticJavaParser.parse(junitTests);
 		
-		String className = "";
+		ArrayList<String> className = new ArrayList<>();
 		
 		new ClassNameCollector().visit(cu, className);
 		
-		System.out.println(className);
+		ArrayList<Hashtable<String,String>> tags = new ArrayList<>();
+		
+		new TagNameCollector().visit(cu, tags);
 		
 		List<TestItem> init = new ArrayList<>();
 		
@@ -79,8 +79,11 @@ public class JUnitTestParser<JavaSymbolSolver>  {
 			t.destroy = destroy;
 			t.test.add(test.get(j));
 			tests.add(t);
-			
+			t.suite = className.get(0);
+			t.suiteDescription = className.get(1);
+			t.tag = tags.get(j);
 		}
+		
 		
 		return tests;
 		

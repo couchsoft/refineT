@@ -1,14 +1,35 @@
 package org.refinet.parser;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.DisplayName;
+import org.refinet.api.TestItem;
+
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
-public class ClassNameCollector  extends VoidVisitorAdapter<String> {
+public class ClassNameCollector  extends VoidVisitorAdapter<ArrayList<String>> {
 	
-	public void visit(ClassOrInterfaceDeclaration c, String collector) {
+	public void visit(ClassOrInterfaceDeclaration c, ArrayList<String> collector) {
 		super.visit(c, collector);
-		String className = c.getNameAsString();
-		collector =  className;
+		ArrayList<String> classItem = new ArrayList<>();
+		String className = c.getNameAsString(); 
+		classItem.add(className);
+		String displayName = null;
+		if (c.getAnnotationByClass(DisplayName.class).isPresent()) {
+			displayName = getDisplayNameWithoutAnnotation(c.getAnnotationByClass(DisplayName.class).get().toString());
+			classItem.add(displayName);
 		}
+		
+		collector.addAll(classItem);
+		
+		
+		}
+	
+	private static String getDisplayNameWithoutAnnotation(String displayName) {
+		return displayName.substring(14, displayName.length()-2);
+	}
 
 }
