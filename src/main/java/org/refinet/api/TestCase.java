@@ -17,7 +17,7 @@ public class TestCase {
 	
 	@Override
 	public String toString() {
-		return "\nTestCase [ Suite=" + suite + ", SuiteDescription" + suiteDescription + " \n ,init=" + init + ", \n test=" + test + ",  \n preparation=" + preparation + ", \n wrapup=" + wrapup
+		return "\nTestCase [ Suite=" + suite + ", SuiteDescription= " + suiteDescription + " \n ,init=" + init + ", \n test=" + test + ",  \n preparation=" + preparation + ", \n wrapup=" + wrapup
 				+ ", \n destroy=" + destroy + ", \n Tag=" + tag + "]\n";
 	}
 	

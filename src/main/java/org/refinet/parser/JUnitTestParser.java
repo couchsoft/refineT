@@ -31,6 +31,7 @@ public class JUnitTestParser<JavaSymbolSolver>  {
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(path, "*Tests.{java,class,jar}")) {
 		    for (Path entry: stream) {
 		    	File f =  new File(path.toString() +"/"+ entry.getFileName());
+
 		    	testcase.addAll(parse(f));
 		    }
 		} catch (IOException x) {
