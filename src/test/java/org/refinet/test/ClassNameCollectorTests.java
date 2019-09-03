@@ -73,7 +73,7 @@ public class ClassNameCollectorTests {
 		assertEquals("After we finished all the tests, we close our calculator app", destroy.get(0).name);
 	  }
 	
-	String test4 = " @BeforeAll\r\n" + 
+	String test4= " @BeforeAll\r\n" + 
 			"  public void loadCalculator() {}";
 	
 	
