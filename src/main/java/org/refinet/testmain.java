@@ -34,20 +34,13 @@ import com.google.j2objc.annotations.ReflectionSupport;
 
 
 public class testmain {
-	
-	static String FILE_TO_PARSE = "src/main/resources/tests";
-	public static void main(String[] args) {
-		
-		Path path = Paths.get(FILE_TO_PARSE);
-		List<TestCase> tests = JUnitTestParser.parse(path);
-		System.out.println(tests);
 
-		
-		
+    static String FILE_TO_PARSE = "src/main/resources/tests";
 
-	}
-    
-  
-
+    public static void main(String[] args) {
+        Path path = Paths.get(FILE_TO_PARSE);
+        List<TestCase> tests = JUnitTestParser.parse(path);
+        System.out.println(tests);
+    }
 
 }

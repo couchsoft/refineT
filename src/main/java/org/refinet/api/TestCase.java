@@ -20,10 +20,6 @@ public class TestCase {
 		return "\nTestCase [ Suite=" + suite + ", SuiteDescription= " + suiteDescription + " \n ,init=" + init + ", \n test=" + test + ",  \n preparation=" + preparation + ", \n wrapup=" + wrapup
 				+ ", \n destroy=" + destroy + ", \n Tag=" + tag + "]\n";
 	}
-	
-	
-	
-	
 
 }
 
