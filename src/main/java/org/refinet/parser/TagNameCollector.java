@@ -15,31 +15,43 @@ public class TagNameCollector extends VoidVisitorAdapter<ArrayList<Hashtable<Str
 
         ArrayList<Hashtable<String, String>> fertigeTags = new ArrayList<>();
         Hashtable<String, String> tags = new Hashtable<>();
-        ArrayList<Integer> tagNumber = new ArrayList<>();
+        ArrayList<Integer> tagNumbers = new ArrayList<>();
 
         if (md.getAnnotationByClass(Test.class).isPresent()) {
             for (int i = 0; i < md.getAnnotations().size(); i++) {
                 if (md.getAnnotations().get(i).getNameAsString().equals("Tag")) {
-                    tagNumber.add(i);
+                    tagNumbers.add(i);
                 }
             }
-            for (int i = 0; i < tagNumber.size(); i++) {
-                String tag = getTagNameWithoutAnnotation(md.getAnnotations().get(tagNumber.get(i)).toString());
-                String[] tagsplit = tag.split(":");
-                if (tagsplit.length > 1) {
-                    tags.put(tagsplit[0], tagsplit[1]);
-                } else {
-                    tags.put(tagsplit[0], "");
-                }
+            
+            for (int i = 0; i < tagNumbers.size(); i++) {
+                String tag = getTagNameWithoutAnnotation(md.getAnnotations().get(tagNumbers.get(i)).toString());
+                System.out.println(tag);
+                tags.putAll(splittedTags(tag));
             }
+            
             fertigeTags.add(tags);
-            tagNumber.clear();
+            System.out.println(md.getDeclarationAsString());
+            System.out.println(fertigeTags);
+            tagNumbers.clear();
         }
-
+        
         collector.addAll(fertigeTags);
     }
+    
 
-    private String getTagNameWithoutAnnotation(String tagName) {
+    private Hashtable<String, String> splittedTags(String tag) {
+    	Hashtable<String, String> tags = new Hashtable<>();
+    	 String[] tagsplit = tag.split(":");
+         if (tagsplit.length > 1) {
+             tags.put(tagsplit[0], tagsplit[1]);
+         } else {
+             tags.put(tagsplit[0], "");
+         }
+		return tags;
+	}
+
+	private String getTagNameWithoutAnnotation(String tagName) {
         return tagName.substring(6, tagName.length() - 2);
     }
 

@@ -12,7 +12,7 @@ public class TestItemCollector {
         TestItem ti = new TestItem();
         ti.id = md.getNameAsString();
         if (md.getAnnotationByClass(DisplayName.class).isPresent()) {
-            ti.name = getDisplayNameWithoutAnnotation(md.getAnnotationByClass(DisplayName.class).get().toString());
+            ti.name = getDisplayNameWithoutAnnotation(md);
         }
         if (md.getJavadocComment().isPresent()) {
             String comment = md.getJavadoc().get().getDescription().toText();
@@ -21,7 +21,8 @@ public class TestItemCollector {
         return ti;
     }
 
-    private static String getDisplayNameWithoutAnnotation(String displayName) {
+    private static String getDisplayNameWithoutAnnotation(MethodDeclaration md) {
+    	String displayName = md.getAnnotationByClass(DisplayName.class).get().toString();
         return displayName.substring(14, displayName.length() - 2);
     }
 }

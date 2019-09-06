@@ -35,7 +35,7 @@ public class AccountingTests {
    */
   @Test
   @DisplayName("Our Accouting app need a correct iban")
-  public void testThatCalculatorCanAddTwoNumbers() {
+  public void testThatCorrectIban() {
     System.out.println("Some dummy debug information");
   }
   

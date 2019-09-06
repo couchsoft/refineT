@@ -64,7 +64,6 @@ public class JUnitTestParser<JavaSymbolSolver> {
      
         List<TestItem> test = parseTests(cu);
 
-
         for (int j = 0; j < test.size(); j++) {
             TestCase t = new TestCase();
             t.init = parseInit(cu);

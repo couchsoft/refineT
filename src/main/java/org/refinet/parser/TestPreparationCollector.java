@@ -12,9 +12,6 @@ import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
 public class TestPreparationCollector extends VoidVisitorAdapter<List<TestItem>> {
 
-    String file;
-    TestItem tc = new TestItem();
-
 
     public void visit(MethodDeclaration md, List<TestItem> collector) {
         super.visit(md, collector);
