@@ -1,13 +1,8 @@
 package org.refinet.parser;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.DisplayName;
-import org.refinet.api.TestItem;
-
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
-import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
 public class ClassNameCollector extends VoidVisitorAdapter<ArrayList<String>> {

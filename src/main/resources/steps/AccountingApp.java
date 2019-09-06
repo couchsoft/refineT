@@ -1,4 +1,4 @@
-package org.refinet.steps;
+package src.main.resources.steps;
 
 public class AccountingApp {
 

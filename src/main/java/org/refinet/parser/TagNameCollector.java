@@ -2,12 +2,7 @@ package org.refinet.parser;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
-
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.refinet.api.TestItem;
 
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;

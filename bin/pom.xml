@@ -84,7 +84,7 @@
                 <!-- add Main-Class to manifest file -->
                 <transformer
                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>org.refinet.CliTestParser</mainClass>
+                  <mainClass>org.refinet.testmain</mainClass>
                 </transformer>
               </transformers>
             </configuration>

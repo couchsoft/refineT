@@ -2,7 +2,6 @@ package org.refinet.parser;
 
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.refinet.api.TestItem;
 
 import com.github.javaparser.ast.body.MethodDeclaration;

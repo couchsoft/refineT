@@ -1,4 +1,4 @@
-package org.refinet.tests;
+package src.main.resources.tests;
 
 import org.junit.jupiter.api.Test;
 import org.refinet.steps.CalculatorApp;
