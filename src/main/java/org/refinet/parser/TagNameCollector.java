@@ -12,32 +12,54 @@ public class TagNameCollector extends VoidVisitorAdapter<ArrayList<Hashtable<Str
 
     public void visit(MethodDeclaration md, ArrayList<Hashtable<String, String>> collector) {
         super.visit(md, collector);
-
-        ArrayList<Hashtable<String, String>> fertigeTags = new ArrayList<>();
-        Hashtable<String, String> tags = new Hashtable<>();
-        ArrayList<Integer> tagNumbers = new ArrayList<>();
-
+        ArrayList<Hashtable<String, String>> sortedTags = new ArrayList<>();
+           
         if (md.getAnnotationByClass(Test.class).isPresent()) {
+        	
+        sortedTags = new ArrayList<>();
+        ArrayList<Integer> tagNumbers = searchTags(md);
+        Hashtable<String, String> tags = sortTags(tagNumbers, md);
+        
+        sortedTags.add(tags);
+        //tagNumbers.clear();
+        
+        } 
+        collector.addAll(sortedTags);
+    
+    }
+        
+        
+    private Hashtable<String, String> sortTags(ArrayList<Integer> tagNumbers, MethodDeclaration md) {
+       Hashtable<String, String> tags = new Hashtable<>();
+         for (int i = 0; i < tagNumbers.size(); i++) {
+             String tag = getTagNameWithoutAnnotation(md , tagNumbers.get(i));
+             tags.putAll(splittedTags(tag));
+             }
+ 		return tags;
+	}
+
+
+
+	private String getTagNameWithoutAnnotation(MethodDeclaration md, int tagNumber) {
+		String tagName = md.getAnnotations().get(tagNumber).toString();
+	 return tagName.substring(6, tagName.length() - 2);
+		
+	}
+
+        
+
+    private ArrayList<Integer> searchTags(MethodDeclaration md) {
+    	ArrayList<Integer> tagNumbers = new ArrayList<>();
+    	if (md.getAnnotationByClass(Test.class).isPresent()) {
             for (int i = 0; i < md.getAnnotations().size(); i++) {
                 if (md.getAnnotations().get(i).getNameAsString().equals("Tag")) {
                     tagNumbers.add(i);
                 }
             }
-            
-            for (int i = 0; i < tagNumbers.size(); i++) {
-                String tag = getTagNameWithoutAnnotation(md.getAnnotations().get(tagNumbers.get(i)).toString());
-                System.out.println(tag);
-                tags.putAll(splittedTags(tag));
-            }
-            
-            fertigeTags.add(tags);
-            System.out.println(md.getDeclarationAsString());
-            System.out.println(fertigeTags);
-            tagNumbers.clear();
-        }
-        
-        collector.addAll(fertigeTags);
+	}
+    	return tagNumbers;
     }
+
     
 
     private Hashtable<String, String> splittedTags(String tag) {
@@ -50,9 +72,4 @@ public class TagNameCollector extends VoidVisitorAdapter<ArrayList<Hashtable<Str
          }
 		return tags;
 	}
-
-	private String getTagNameWithoutAnnotation(String tagName) {
-        return tagName.substring(6, tagName.length() - 2);
-    }
-
 }
