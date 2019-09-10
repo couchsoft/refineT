@@ -19,9 +19,8 @@ public class TagNameCollector extends VoidVisitorAdapter<ArrayList<Hashtable<Str
         sortedTags = new ArrayList<>();
         ArrayList<Integer> tagNumbers = searchTags(md);
         Hashtable<String, String> tags = sortTags(tagNumbers, md);
-        
+    
         sortedTags.add(tags);
-        //tagNumbers.clear();
         
         } 
         collector.addAll(sortedTags);
