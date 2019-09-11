@@ -17,7 +17,6 @@ public class PreparationCollectorTests {
     String classBegin = "@DisplayName(\"Test our calculator app for basic arithmetic operations\")\n" +
             "public class CalculatorTests {\n";
     String classEnd = "}";
-
     String test = "@BeforeEach\r\n" +
             "  public void resetCalculator() {}";
 
@@ -29,5 +28,4 @@ public class PreparationCollectorTests {
         new TestPreparationCollector().visit(cu, preparation);
         assertEquals("resetCalculator", preparation.get(0).id);
     }
-
 }

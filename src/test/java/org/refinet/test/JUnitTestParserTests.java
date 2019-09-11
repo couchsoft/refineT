@@ -3,37 +3,18 @@ package org.refinet.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.refinet.api.TestCase;
 import org.refinet.api.TestItem;
-import org.refinet.parser.ClassNameCollector;
 import org.refinet.parser.JUnitTestParser;
-import org.refinet.parser.TagNameCollector;
-import org.refinet.parser.TestDestroyCollector;
-import org.refinet.parser.TestInitCollector;
-import org.refinet.parser.TestPreparationCollector;
-import org.refinet.parser.TestTestCollector;
-import org.refinet.parser.TestWrapupCollector;
-import org.refinet.steps.CalculatorApp;
-import org.refinet.steps.CalculatorUsage;
 
-import com.github.javaparser.StaticJavaParser;
-import com.github.javaparser.ast.CompilationUnit;
 
 public class JUnitTestParserTests {
 
     String classBegin = "@DisplayName(\"Test our calculator app for basic arithmetic operations\")\n" +
             "public class CalculatorTests {\n";
     String classEnd = "}";
-
     String test = " /**\r\n" +
             "   * Open the calculator app for testing.\r\n" +
             "   */\r\n" +
@@ -89,34 +70,26 @@ public class JUnitTestParserTests {
             "    CalculatorUsage.assertThatCalculatorDidNotLogAnyError();\r\n" +
             "  }";
 
-
     @Test
     public void testTestCaseIsExtracted() {
         String givenTestToParse = classBegin + test + classEnd;
-
         List<TestCase> tests = JUnitTestParser.parse(givenTestToParse);
-
         List<TestCase> erwarteteWerte = new ArrayList<>();
-
+        
         // Beispiel TestCase 1
         TestCase tc = new TestCase();
         TestItem ti = new TestItem();
         tc.suite = "CalculatorTests";
         tc.suiteDescription = "Test our calculator app for basic arithmetic operations";
         ti.id = "loadCalculator";
-
         tc.init.add(ti);
-
         ti = new TestItem();
         ti.id = "testThatCalculatorCanAddTwoNumbers";
         ti.name = "Our calculator should be able to add two numbers";
         tc.test.add(ti);
-
         ti = new TestItem();
         ti.id = "checkThatCalculatorDidNotLogAnyErrors";
-
         tc.wrapup.add(ti);
-
         ti = new TestItem();
         tc.tag.put("regression", "");
         tc.tag.put("dashcalc", "");
@@ -128,17 +101,13 @@ public class JUnitTestParserTests {
         tc.suite = "CalculatorTests";
         tc.suiteDescription = "Test our calculator app for basic arithmetic operations";
         ti.id = "loadCalculator";
-
         tc.init.add(ti);
-
         ti = new TestItem();
         ti.id = "testThatCalculatorHasImplementedAnEasterEgg";
         ti.name = "Our funny developers implemented an easter egg";
         tc.test.add(ti);
-
         ti = new TestItem();
         ti.id = "checkThatCalculatorDidNotLogAnyErrors";
-
         tc.wrapup.add(ti);
         erwarteteWerte.add(tc);
 
@@ -148,25 +117,20 @@ public class JUnitTestParserTests {
         tc.suite = "CalculatorTests";
         tc.suiteDescription = "Test our calculator app for basic arithmetic operations";
         ti.id = "loadCalculator";
-
         tc.init.add(ti);
-
         ti = new TestItem();
         ti.id = "testThatCalculatorFailsIfDivisorIsNull";
         ti.name = "Our calculator should fail if we try to divide by zero";
         tc.test.add(ti);
-
         ti = new TestItem();
         ti.id = "checkThatCalculatorDidNotLogAnyErrors";
-
         tc.wrapup.add(ti);
         ti = new TestItem();
         tc.tag.put("regression", "");
         tc.tag.put("negative", "");
         tc.tag.put("runtime", "slow");
-
         erwarteteWerte.add(tc);
-
+        
         assertEquals(erwarteteWerte.toString(), tests.toString());
     }
 

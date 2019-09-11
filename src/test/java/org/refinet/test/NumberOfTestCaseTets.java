@@ -19,6 +19,5 @@ public class NumberOfTestCaseTets {
         Path path = Paths.get(test);
         List<TestCase> tests = JUnitTestParser.parse(path);
         assertEquals(7, tests.size());
-
     }
 }

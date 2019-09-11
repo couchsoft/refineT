@@ -25,6 +25,4 @@ public class ClassNameCollectorTests {
         new ClassNameCollector().visit(cu, className);
         assertEquals("CalculatorTests", className.get(0));
     }
-
-
 }

@@ -17,7 +17,6 @@ public class WrapupCollectorTests {
     String classBegin = "@DisplayName(\"Test our calculator app for basic arithmetic operations\")\n" +
             "public class CalculatorTests {\n";
     String classEnd = "}";
-
     String test = "@AfterEach\r\n" +
             "  public void checkThatCalculatorDidNotLogAnyErrors() {\r\n" +
             "    CalculatorUsage.assertThatCalculatorDidNotLogAnyError();\r\n" +
@@ -31,5 +30,4 @@ public class WrapupCollectorTests {
         new TestWrapupCollector().visit(cu, wrapup);
         assertEquals("checkThatCalculatorDidNotLogAnyErrors", wrapup.get(0).id);
     }
-
 }

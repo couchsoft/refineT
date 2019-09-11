@@ -17,7 +17,6 @@ public class DestroyCollectorTests {
     String classBegin = "@DisplayName(\"Test our calculator app for basic arithmetic operations\")\n" +
             "public class CalculatorTests {\n";
     String classEnd = "}";
-
     String test = "@AfterAll\r\n" +
             "  @DisplayName(\"After we finished all the tests, we close our calculator app\")\r\n" +
             "  public void terminateCalculator() {\r\n" +
@@ -33,5 +32,4 @@ public class DestroyCollectorTests {
         new TestDestroyCollector().visit(cu, destroy);
         assertEquals("After we finished all the tests, we close our calculator app", destroy.get(0).name);
     }
-
 }

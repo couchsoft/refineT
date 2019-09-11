@@ -14,11 +14,9 @@ import com.github.javaparser.ast.CompilationUnit;
 
 public class InitCollectorTests {
 
-
     String classBegin = "@DisplayName(\"Test our calculator app for basic arithmetic operations\")\n" +
             "public class CalculatorTests {\n";
     String classEnd = "}";
-
     String test = " @BeforeAll\r\n" +
             "  public void loadCalculator() {}";
 
