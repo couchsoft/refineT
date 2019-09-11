@@ -13,25 +13,25 @@ import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 
 public class DestroyCollectorTests {
-	
-	 String classBegin = "@DisplayName(\"Test our calculator app for basic arithmetic operations\")\n" +
-	            "public class CalculatorTests {\n";
-	    String classEnd = "}";
-	
-	   String test = "@AfterAll\r\n" +
-	            "  @DisplayName(\"After we finished all the tests, we close our calculator app\")\r\n" +
-	            "  public void terminateCalculator() {\r\n" +
-	            "    System.out.println(\"Some dummy debug information\");\r\n" +
-	            "    CalculatorApp.close();\r\n" +
-	            "  }";
 
-	    @Test
-	    public void testDestroyIsExtracted() {
-	    	String givenTestToParse = classBegin + test + classEnd;
-	        CompilationUnit cu = StaticJavaParser.parse(givenTestToParse);
-	        List<TestItem> destroy = new ArrayList<>();
-	        new TestDestroyCollector().visit(cu, destroy);
-	        assertEquals("After we finished all the tests, we close our calculator app", destroy.get(0).name);
-	    }
+    String classBegin = "@DisplayName(\"Test our calculator app for basic arithmetic operations\")\n" +
+            "public class CalculatorTests {\n";
+    String classEnd = "}";
+
+    String test = "@AfterAll\r\n" +
+            "  @DisplayName(\"After we finished all the tests, we close our calculator app\")\r\n" +
+            "  public void terminateCalculator() {\r\n" +
+            "    System.out.println(\"Some dummy debug information\");\r\n" +
+            "    CalculatorApp.close();\r\n" +
+            "  }";
+
+    @Test
+    public void testDestroyIsExtracted() {
+        String givenTestToParse = classBegin + test + classEnd;
+        CompilationUnit cu = StaticJavaParser.parse(givenTestToParse);
+        List<TestItem> destroy = new ArrayList<>();
+        new TestDestroyCollector().visit(cu, destroy);
+        assertEquals("After we finished all the tests, we close our calculator app", destroy.get(0).name);
+    }
 
 }

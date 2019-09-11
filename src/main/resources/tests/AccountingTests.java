@@ -18,43 +18,39 @@ import org.junit.jupiter.api.Tag;
 
 @DisplayName("Test our AccountingSystem")
 public class AccountingTests {
-	
-  /**
-   * Open the Accounting app for testing.
-   */
-  @BeforeAll
-  public void loadAccounting() {
-    System.out.println("Some dummy debug information");
-    AccountingApp.open();
-  }
-  
-  /**
-   * Check IBAN for EU Standard
-   *
-   * 
-   */
-  @Test
-  @DisplayName("Our Accouting app need a correct iban")
-  public void testThatCorrectIban() {
-    System.out.println("Some dummy debug information");
-  }
-  
-  /**
-   * 
-   * Clear input fields 
-   * 
-   */
-  @AfterEach
-  public void ClearAccouting() {
-	  AccountingApp.clear();
-  }
 
-  @AfterAll
-  @DisplayName("After we finished all the tests, we close our accouting app")
-  public void terminateAccounting() {
-    System.out.println("Some dummy debug information");
-    AccountingApp.close();
-  }
+    /**
+     * Open the Accounting app for testing.
+     */
+    @BeforeAll
+    public void loadAccounting() {
+        System.out.println("Some dummy debug information");
+        AccountingApp.open();
+    }
+
+    /**
+     * Check IBAN for EU Standard
+     */
+    @Test
+    @DisplayName("Our Accouting app need a correct iban")
+    public void testThatCorrectIban() {
+        System.out.println("Some dummy debug information");
+    }
+
+    /**
+     * Clear input fields
+     */
+    @AfterEach
+    public void ClearAccouting() {
+        AccountingApp.clear();
+    }
+
+    @AfterAll
+    @DisplayName("After we finished all the tests, we close our accouting app")
+    public void terminateAccounting() {
+        System.out.println("Some dummy debug information");
+        AccountingApp.close();
+    }
 
 }
 

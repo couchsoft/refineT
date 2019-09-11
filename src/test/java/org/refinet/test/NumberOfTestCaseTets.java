@@ -12,13 +12,13 @@ import org.refinet.parser.JUnitTestParser;
 
 public class NumberOfTestCaseTets {
 
-	String test = "src/main/resources/tests";
-	
-	 @Test
-	    public void testNumberOfTestCases() {
-		 Path path = Paths.get(test);
-	        List<TestCase> tests = JUnitTestParser.parse(path);
-	        assertEquals(7,tests.size());
-		 
-	 }
+    String test = "src/main/resources/tests";
+
+    @Test
+    public void testNumberOfTestCases() {
+        Path path = Paths.get(test);
+        List<TestCase> tests = JUnitTestParser.parse(path);
+        assertEquals(7, tests.size());
+
+    }
 }

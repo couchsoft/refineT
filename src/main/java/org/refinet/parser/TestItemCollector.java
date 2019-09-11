@@ -22,7 +22,7 @@ public class TestItemCollector {
     }
 
     private static String getDisplayNameWithoutAnnotation(MethodDeclaration md) {
-    	String displayName = md.getAnnotationByClass(DisplayName.class).get().toString();
+        String displayName = md.getAnnotationByClass(DisplayName.class).get().toString();
         return displayName.substring(14, displayName.length() - 2);
     }
 }

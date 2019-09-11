@@ -13,8 +13,8 @@ import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 
 public class WrapupCollectorTests {
-	
-	String classBegin = "@DisplayName(\"Test our calculator app for basic arithmetic operations\")\n" +
+
+    String classBegin = "@DisplayName(\"Test our calculator app for basic arithmetic operations\")\n" +
             "public class CalculatorTests {\n";
     String classEnd = "}";
 
@@ -25,7 +25,7 @@ public class WrapupCollectorTests {
 
     @Test
     public void testWarpupIsExtracted() {
-    	String givenTestToParse = classBegin + test + classEnd;
+        String givenTestToParse = classBegin + test + classEnd;
         CompilationUnit cu = StaticJavaParser.parse(givenTestToParse);
         List<TestItem> wrapup = new ArrayList<>();
         new TestWrapupCollector().visit(cu, wrapup);

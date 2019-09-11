@@ -24,7 +24,7 @@ public class InitCollectorTests {
 
     @Test
     public void testInitIsExtracted() {
-    	String givenTestToParse = classBegin + test + classEnd;
+        String givenTestToParse = classBegin + test + classEnd;
         CompilationUnit cu = StaticJavaParser.parse(givenTestToParse);
         List<TestItem> init = new ArrayList<>();
         new TestInitCollector().visit(cu, init);

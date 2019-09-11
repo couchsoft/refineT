@@ -1,6 +1,7 @@
 package org.refinet.parser;
 
 import java.util.ArrayList;
+
 import org.junit.jupiter.api.DisplayName;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
