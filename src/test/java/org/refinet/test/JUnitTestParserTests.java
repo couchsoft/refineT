@@ -2,6 +2,8 @@ package org.refinet.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -132,6 +134,15 @@ public class JUnitTestParserTests {
         erwarteteWerte.add(tc);
         
         assertEquals(erwarteteWerte.toString(), tests.toString());
+    }
+    
+    
+    @Test
+    public void testNumberOfTestCases() {
+    	String test = "src/main/resources/tests";
+        Path path = Paths.get(test);
+        List<TestCase> tests = JUnitTestParser.parse(path);
+        assertEquals(7, tests.size());
     }
 
 }
